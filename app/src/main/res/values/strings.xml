@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TheAndroidFactoryMVVMRickMorty</string>
+    <string name="origin_text">Origin</string>
+    <string name="species_text">Species</string>
 </resources>
