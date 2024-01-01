@@ -1,21 +1,20 @@
 package com.example.theandroidfactorymvvmrickmorty.data.remote
 
-import com.example.theandroidfactorymvvmrickmorty.data.model.GetCharacterByIdResponse
-import com.example.theandroidfactorymvvmrickmorty.utils.SimpleResponse
-import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
-class ApiClient(
-    private val apiService: ApiService
-) {
-    suspend fun getCharacterById(characterId: Int): SimpleResponse<GetCharacterByIdResponse> {
-        return safeApiCall { apiService.getCharacterById(characterId) }
+object ApiClient {
+
+    private const val BASE_URL = "https://rickandmortyapi.com/"
+
+    private val retrofit: Retrofit by lazy {
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
     }
 
-    private inline fun <T> safeApiCall(apiCall: () -> Response<T>): SimpleResponse<T> {
-        return try {
-            SimpleResponse.success(apiCall.invoke())
-        } catch (e: Exception) {
-            SimpleResponse.failure(e)
-        }
+    val apiService: ApiService by lazy {
+        retrofit.create(ApiService::class.java)
     }
 }

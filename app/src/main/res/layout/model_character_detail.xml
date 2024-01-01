@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
     tools:context=".presentation.MainActivity">
 
     <com.google.android.material.card.MaterialCardView
@@ -83,7 +84,7 @@
         android:textStyle="italic"
         app:layout_constraintStart_toStartOf="@+id/divider"
         app:layout_constraintTop_toBottomOf="@+id/cardView"
-        android:text="Origin" />
+        android:text="@string/origin_text" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/originTextView"
@@ -106,7 +107,7 @@
         android:textStyle="italic"
         app:layout_constraintStart_toStartOf="@+id/originTextView"
         app:layout_constraintTop_toBottomOf="@+id/originTextView"
-        android:text="Species" />
+        android:text="@string/species_text" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/speciesTextView"
